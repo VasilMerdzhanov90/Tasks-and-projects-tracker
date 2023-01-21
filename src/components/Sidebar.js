@@ -2,6 +2,8 @@ import './Sidebar.css'
 
 import AddIcon from '../assets/add_icon.svg'
 import DashboardIcon from '../assets/dashboard_icon.svg'
+import finish from '../assets/finish.svg'
+
 import { NavLink } from 'react-router-dom'
 import Avatar from './Avatar'
 import { useAuthContext } from '../hooks/useAuthContext'
@@ -15,7 +17,7 @@ export default function Sidebar() {
             <div className='sidebar-content'>
                 <div className='user'>
                     <Avatar src={user.photoURL} />
-                    <p>Hey {user.displayName}</p>
+                    <p>Hello, {user.displayName}</p>
                 </div>
                 <nav className='links'>
                     <ul>
@@ -28,7 +30,13 @@ export default function Sidebar() {
                         <li>
                             <NavLink to='/create'>
                                 <img src={AddIcon} alt="" />
-                                <span>New Project</span>
+                                <span>New Task</span>
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/finished'>
+                                <img src={finish} alt="" />
+                                <span>Finished Tasks</span>
                             </NavLink>
                         </li>
                     </ul>

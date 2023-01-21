@@ -28,6 +28,7 @@
 
 .sidebar .links a {
     display: flex;
+    align-items: center;
     padding: 10px;
     text-decoration: none;
     width: 100%;
@@ -38,6 +39,7 @@
 .sidebar .links img {
     margin-right: 10px;
     filter: invert(100%);
+    width: 30px;
 }
 
 

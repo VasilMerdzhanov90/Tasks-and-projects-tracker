@@ -10,13 +10,16 @@ export default function Dashboard() {
 
     const { user } = useAuthContext();
 
-    const { documents, error } = useCollection('projects');
+    const { documents, error } = useCollection('projects', ['finished', '==', false]);
 
     const [currentFilter, setCurrentFilter] = useState('all');
 
     const changeFilter = (newFilter) => {
         setCurrentFilter(newFilter)
     }
+
+    //filtering the not finished!!!
+    // const notFinishedDocuments = documents.filter((doc) => doc.finished === false)
 
     const projects = documents
         ? documents.filter((document) => {
