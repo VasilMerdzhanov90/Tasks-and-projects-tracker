@@ -1,10 +1,10 @@
 import './Project.css'
 
 import React from 'react'
-import { useParams } from 'react-router'
 import { useDocument } from '../../hooks/useDocument';
 import ProjectSummary from './ProjectSummary';
 import ProjectComments from './ProjectComments';
+import { useParams } from 'react-router-dom';
 
 export default function Project() {
 
