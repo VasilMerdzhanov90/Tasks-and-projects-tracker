@@ -14,7 +14,7 @@ export default function Signup() {
     const [thumbnailError, setThumbnailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [emailError, setEmailError] = useState('');
-    const [whitespaceError, setWhitespaceError] = useState('');
+    const [usernameError, setUsernameError] = useState('');
 
     //email validator with regexp
     const validateEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
@@ -22,11 +22,16 @@ export default function Signup() {
     //import the hook for signup
     const { signup, isPending, error } = useSignup();
 
-    //all inputs
-    let allInputs = [email, password, repeatPassword, displayName];
-
 
     //errors check
+    const handleUsernameCheck = (e) => {
+        if (e.target.value.includes(' ')) {
+            setUsernameError('Username must not include any whitespace!')
+            return
+        }
+        setUsernameError('')
+    }
+
     const handlePasswordCheck = (e) => {
         if (repeatPassword !== password) {
             setPasswordError('Passwords don\'t match!')
@@ -68,27 +73,10 @@ export default function Signup() {
         }
     }
 
-    const validateWhitespace = (arr) => {
-        let isErrorWhitespace = false;
-        arr.forEach((element, index) => {
-            if (element.includes(' ')) {
-                setWhitespaceError('Input\'s must NOT include any whitespace!')
-                isErrorWhitespace = true;
-            } else {
-                setWhitespaceError('')
-                isErrorWhitespace = false;
-            }
-        });
-        return isErrorWhitespace
-    }
-
     //submit
     const handleSubmit = (e) => {
         e.preventDefault();
-        //checking for whitespace in inputs
-        if (validateWhitespace(allInputs)) {
-            return
-        }
+
         if (passwordError !== '' || thumbnailError !== '') {
             console.log('invalid inputs')
             return
@@ -110,8 +98,10 @@ export default function Signup() {
                     required
                     type="text"
                     onChange={(e) => setDisplayName(e.target.value)}
+                    onBlur={handleUsernameCheck}
                     value={displayName}
                 />
+                {usernameError && <p className='error'>{usernameError}</p>}
             </label>
             <label>
                 <span>email:</span>
@@ -155,7 +145,6 @@ export default function Signup() {
             </label>
             {!isPending && <button className='btn'>Signup</button>}
             {isPending && <button className='btn' disabled>Loading...</button>}
-            {whitespaceError && <p className='error'>{whitespaceError}</p>}
             {error && <div className='error'>{error}</div>}
         </form>
     )
