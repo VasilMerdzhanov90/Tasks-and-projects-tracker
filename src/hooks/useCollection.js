@@ -19,6 +19,7 @@ export const useCollection = (collection, _query, _orderBy) => {
     if (orderBy) {
       ref = ref.orderBy(...orderBy)
     }
+// console.log(collection,query)
 
     const unsubscribe = ref.onSnapshot(snapshot => {
       let results = []

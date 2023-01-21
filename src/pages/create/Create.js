@@ -81,7 +81,8 @@ export default function Create() {
             dueDate: timestamp.fromDate(new Date(dueDate)),
             comments: [],
             createdBy,
-            assignedUsersList
+            assignedUsersList,
+            finished: false
         }
 
         await addDocument(project);
@@ -92,11 +93,11 @@ export default function Create() {
 
     return (
         <div className='create-form'>
-            <h2 className='page-title'>Create a new Project</h2>
+            <h2 className='page-title'>Create a new Task</h2>
 
             <form onSubmit={handleSubmit}>
                 <label>
-                    <span>Project name:</span>
+                    <span>Task name:</span>
                     <input
                         type="text"
                         required
@@ -105,7 +106,7 @@ export default function Create() {
                     />
                 </label>
                 <label>
-                    <span>Project details:</span>
+                    <span>Task details:</span>
                     <textarea
                         type="text"
                         required
@@ -123,14 +124,14 @@ export default function Create() {
                     />
                 </label>
                 <label>
-                    <span>Project category:</span>
+                    <span>Task category:</span>
                     <Select
                         onChange={(option) => setCategory(option)}
                         options={categories}
                     />
                 </label>
                 <label>
-                    <span>Assigned users:</span>
+                    <span>Assign users to the task:</span>
                     <Select
                         options={users}
                         onChange={(option) => setAssignedUsers(option)}

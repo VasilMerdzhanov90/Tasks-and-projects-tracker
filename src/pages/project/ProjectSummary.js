@@ -1,17 +1,28 @@
 import { useNavigate } from 'react-router-dom';
 import Avatar from '../../components/Avatar'
+import { timestamp } from '../../firebase/config';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useFirestore } from '../../hooks/useFirestore'
 
 
-export default function ProjectSummary({ project }) {
-    const { deleteDocument } = useFirestore('projects');
+export default function ProjectSummary({ project, status }) {
+    const { deleteDocument, finishDocument } = useFirestore('projects');
     const { user } = useAuthContext();
     const navigate = useNavigate();
 
     const handleClick = async (e) => {
         deleteDocument(project.id);
         navigate('/');
+    }
+
+    const handleFinish = async () => {
+        const finishedBy = {
+            uid: user.uid,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+            finishedAt: timestamp.fromDate(new Date())
+        }
+        finishDocument(project.id, finishedBy)
     }
 
     return (
@@ -35,7 +46,15 @@ export default function ProjectSummary({ project }) {
                     ))}
                 </div>
             </div>
-            {user.uid === project.createdBy.id && < button onClick={handleClick} className='btn'>Mark as Completed</button>}
+            {user.uid === project.createdBy.id && < button onClick={handleClick} className='btn'>Delete Task</button>}
+            {!project.finished
+                ? <button
+                    className='btn'
+                    onClick={handleFinish}>
+                    Mark as Completed
+                </button>
+                : <p className='error'>THIS TASK HAS BEEN FINISHED BY: {project.finishedBy.displayName.toUpperCase()}</p>
+            }
         </div >
     )
 }

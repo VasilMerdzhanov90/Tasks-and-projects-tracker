@@ -14,6 +14,7 @@ import Login from './pages/login/Login';
 import Project from './pages/project/Project';
 import Signup from './pages/signup/Signup';
 import OnlineUsers from './components/OnlineUsers';
+import Finished from './pages/finished/Finished';
 
 
 function App() {
@@ -23,7 +24,7 @@ function App() {
 
     return (
         <div className="App">
-            
+
             {authIsReady && (
                 <BrowserRouter>
                     {user && <Sidebar />}
@@ -49,6 +50,10 @@ function App() {
                             <Route
                                 path='/projects/:id'
                                 element={user ? <Project /> : <Navigate to='/login' />}
+                            />
+                            <Route
+                                path='/finished'
+                                element={user ? <Finished /> : <Navigate to='/login' />}
                             />
                         </Routes>
                     </div>
