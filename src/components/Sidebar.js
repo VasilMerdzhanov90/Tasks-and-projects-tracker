@@ -6,7 +6,6 @@ import { NavLink } from 'react-router-dom'
 import Avatar from './Avatar'
 import { useAuthContext } from '../hooks/useAuthContext'
 
-
 export default function Sidebar() {
 
     const { user } = useAuthContext();

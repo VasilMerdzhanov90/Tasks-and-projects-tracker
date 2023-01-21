@@ -23,6 +23,7 @@ function App() {
 
     return (
         <div className="App">
+            
             {authIsReady && (
                 <BrowserRouter>
                     {user && <Sidebar />}
