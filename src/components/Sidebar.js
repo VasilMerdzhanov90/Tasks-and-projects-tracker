@@ -6,7 +6,6 @@ import { NavLink } from 'react-router-dom'
 import Avatar from './Avatar'
 import { useAuthContext } from '../hooks/useAuthContext'
 
-
 export default function Sidebar() {
 
     const { user } = useAuthContext();
@@ -21,7 +20,7 @@ export default function Sidebar() {
                 <nav className='links'>
                     <ul>
                         <li>
-                            <NavLink exact to='/'>
+                            <NavLink to='/'>
                                 <img src={DashboardIcon} alt="" />
                                 <span>Dashboard</span>
                             </NavLink>
