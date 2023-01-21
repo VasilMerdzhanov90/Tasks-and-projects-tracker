@@ -44,11 +44,19 @@
     align-items: center;
 }
 
+.assigned-to h4 {
+    text-align: center;
+}
+
 .project-list li {
+    width: 33%;
     margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .project-list .avatar {
-    width: 30%;
-    height: 30%;
+    width: 20%;
+    height: 20%;
 }

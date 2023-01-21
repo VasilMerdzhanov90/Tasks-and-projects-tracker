@@ -34,7 +34,7 @@ export default function ProjectComments({ project }) {
 
     return (
         <div className="project-comments">
-            <h4>Project Comments</h4>
+            <h4>Task Comments</h4>
             <ul>
                 {project.comments.length > 0 && project.comments.map(comment => (
                     <li key={comment.id}>
@@ -53,8 +53,8 @@ export default function ProjectComments({ project }) {
             </ul>
             <form onSubmit={handleSubmit} className="add-comment">
                 <label>
-                    <span>Add new comment:</span>
                     <textarea
+                    placeholder="type here here to add a comment"
                         required
                         onChange={(e) => setNewComment(e.target.value)}
                         value={newComment}
