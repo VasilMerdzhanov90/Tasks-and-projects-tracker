@@ -25,9 +25,10 @@
     align-items: center;
     height: 23vh;
   } */
-  
+
   .App .sidebar {
-    height: 19vh;
+    /* last was 23vh */
+    height: 17vh;
     width: 100%;
   }
 
@@ -35,11 +36,24 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 19vh;
+    /* last was 23vh */
+
+    height: 17vh;
   }
 
   .App .sidebar .sidebar-content .user {
-    margin-top: 15px;
+    /* margin-top: 15px; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 12px;
+  }
+
+  .App .sidebar .sidebar-content .user p {
+    margin-left: 4px;
+
+    font-size: 0.8em;
   }
 
   .App .sidebar .sidebar-content .links {
@@ -54,6 +68,12 @@
     display: flex;
   }
 
+  .App .sidebar .sidebar-content .links img {
+    margin: 0;
+    height: 22px;
+    width: 22px;
+  }
+
   .App .sidebar .links a.active {
     border-radius: 1em;
   }
@@ -61,6 +81,7 @@
   .App .sidebar .links ul li a span {
     display: none;
   }
+
 
   /* styling the center layout */
   .App .container {
