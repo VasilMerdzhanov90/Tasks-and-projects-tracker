@@ -14,17 +14,28 @@
   }
 
   /* sidebar with user and links */
-  .App .sidebar {
+  /* .App .sidebar {
     height: 23vh;
     width: 100%;
   }
 
   .App .sidebar .sidebar-content {
-    /* position: relative; */
     display: flex;
     justify-content: space-around;
     align-items: center;
     height: 23vh;
+  } */
+  
+  .App .sidebar {
+    height: 19vh;
+    width: 100%;
+  }
+
+  .App .sidebar .sidebar-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 19vh;
   }
 
   .App .sidebar .sidebar-content .user {
