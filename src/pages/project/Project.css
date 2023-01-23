@@ -84,3 +84,9 @@
     color: var(--text-color);
     font-size: 0.9em;
 }
+
+@media screen and (min-width:280px) and (max-width:768px) {
+    .project-details {
+        background-color: rebeccapurple;
+    }
+}
