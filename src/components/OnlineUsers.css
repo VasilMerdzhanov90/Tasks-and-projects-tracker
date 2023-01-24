@@ -1,7 +1,7 @@
 .user-list {
     display: flex;
     flex-direction: column;
-    width: 230px;
+    /* width: 230px; */
     min-width: 230px;
     padding: 30px;
     box-sizing: border-box;

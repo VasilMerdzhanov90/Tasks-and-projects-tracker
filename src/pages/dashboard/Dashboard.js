@@ -21,12 +21,14 @@ export default function Dashboard() {
         setCurrentFilter(newFilter)
     }
 
+    //TODO ===>>> RESET FILTER!!!!
+
     const projects = documents
         ? documents.filter((document) => {
             switch (currentFilter) {
                 case 'all':
                     return true
-                case 'assigned to me':
+                case 'assigned':
                     let assignedToMe = false;
                     document.assignedUsersList.forEach((u) => {
                         if (user.uid === u.id) {
@@ -68,9 +70,13 @@ export default function Dashboard() {
             {filteredByDate &&
                 <ProjectList projects={filteredByDate} />
             }
+
             {projects && !filteredByDate &&
                 <ProjectList projects={projects} />
             }
+
+
+
         </div>
     )
 }
