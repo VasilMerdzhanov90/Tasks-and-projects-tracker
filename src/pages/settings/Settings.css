@@ -1,0 +1,79 @@
+.settings-container {
+    margin-top: 80px;
+}
+
+.settings-container .settings {
+    display: block;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.258);
+}
+
+.settings-container .settings .setting-title {
+    font-size: 1.5em;
+    padding: 10px;
+    color: var(--heading-color);
+    margin-bottom: 8px;
+}
+
+.settings-container .settings select {
+    margin-left: 20px;
+    padding: 5px 10px;
+    width: 200px;
+    background: #fff;
+    border-radius: 4px;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 1em;
+    border: 1px solid var(--primary-color);
+}
+
+.settings-container .settings .color-picker {
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.422);
+    border-radius: 4px;
+    margin-left: 20px;
+    width: 180px;
+    padding: 8px 40px;
+    margin-bottom: 10px;
+}
+
+.settings-container .settings .color-picker .second-title {
+    color: var(--heading-color);
+    font-size: 1em;
+}
+
+.settings-container .settings .color-picker .color {
+    display: inline-block;
+    border: 0.5px solid rgba(0, 0, 0, 0.403);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    /* margin: 5px; */
+}
+
+.settings-container .settings .color-picker .color:first-of-type {
+    margin-left: 20px;
+}
+
+@media screen and (min-width:280px) and (max-width:768px) {
+    .settings-container {
+        margin-top: 30px;
+    }
+    .settings-container .settings .setting-title {
+        font-size: 1em;
+        padding: 8px;
+        color: var(--heading-color);
+        margin-bottom: 6px;
+    }
+    .settings-container .settings .color-picker {
+        margin: 6px auto;
+    }
+    .settings-container .settings .color-picker .color {
+        width: 29px;
+        height: 29px;
+        cursor: pointer;
+        margin: 5px;
+    }
+}

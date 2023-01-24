@@ -3,6 +3,7 @@ import './Sidebar.css'
 import AddIcon from '../assets/add_icon.svg'
 import DashboardIcon from '../assets/dashboard_icon.svg'
 import finish from '../assets/finish.svg'
+import settings from '../assets/settings.svg'
 
 import { NavLink } from 'react-router-dom'
 import Avatar from './Avatar'
@@ -37,6 +38,12 @@ export default function Sidebar() {
                             <NavLink to='/finished'>
                                 <img src={finish} alt="" />
                                 <span>Finished Tasks</span>
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/settings'>
+                                <img src={settings} alt="" />
+                                <span>Settings</span>
                             </NavLink>
                         </li>
                     </ul>

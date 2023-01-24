@@ -1,5 +1,6 @@
 .sidebar {
-    width: 280px;
+    /* last value was 280px */
+    width: 260px;
     /* min-width: 300px; */
     background-color: var(--primary-color);
     /* height: 100vh; */
@@ -39,7 +40,7 @@
 .sidebar .links img {
     margin-right: 10px;
     filter: invert(100%);
-    width: 30px;
+    max-width: 30px;
 }
 
 
