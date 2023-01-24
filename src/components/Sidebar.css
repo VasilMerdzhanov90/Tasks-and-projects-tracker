@@ -1,5 +1,5 @@
 .sidebar {
-    width: 300px;
+    width: 280px;
     /* min-width: 300px; */
     background-color: var(--primary-color);
     /* height: 100vh; */
@@ -52,4 +52,3 @@
 .sidebar .links .active img {
     filter: invert(40%);
 }
-
