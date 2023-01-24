@@ -10,8 +10,11 @@ export default function ProjectSummary({ project, status }) {
     const { user } = useAuthContext();
     const navigate = useNavigate();
 
-    const handleClick = async (e) => {
-        deleteDocument(project.id);
+    const projectDate = new Date(project.dueDate.seconds * 1000);
+    console.log(projectDate)
+
+    const handleClick = async () => {
+        await deleteDocument(project.id)
         navigate('/');
     }
 
@@ -37,6 +40,7 @@ export default function ProjectSummary({ project, status }) {
                     Details: <br />
                     {project.details}
                 </p>
+                {project.imgUrl && <img className='task-image' src={project.imgUrl} alt="task image" />}
                 <h4>Task assigned to:</h4>
                 <div className='assigned-users'>
                     {project.assignedUsersList.map(user => (

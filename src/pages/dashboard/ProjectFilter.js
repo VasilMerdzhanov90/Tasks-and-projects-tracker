@@ -1,4 +1,4 @@
-const filterList = ['all', 'mine', 'development', 'design', 'marketing', 'sales'];
+const filterList = ['all', 'assigned to me', 'date', 'development', 'design', 'marketing', 'sales', 'todays tasks'];
 
 export default function ProjectFilter({ currentFilter, changeFilter }) {
 
@@ -7,10 +7,11 @@ export default function ProjectFilter({ currentFilter, changeFilter }) {
         changeFilter(newFilter);
     }
 
+
     return (
         <div className="project-filter">
             <nav>
-                <p>Filter by:</p>
+                <p>Filter:</p>
                 {
                     filterList.map((f) => (
                         <button
@@ -19,6 +20,7 @@ export default function ProjectFilter({ currentFilter, changeFilter }) {
                             onClick={() => handleClick(f)}
                         >{f}</button>
                     ))}
+
             </nav>
         </div>
     )

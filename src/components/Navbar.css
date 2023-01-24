@@ -2,7 +2,7 @@
     width: 100%;
     padding: 30px 0;
     box-sizing: border-box;
-    margin-bottom: 80px;
+    /* margin-bottom: 60px; */
 }
 
 .navbar ul {
@@ -33,3 +33,21 @@
     text-decoration: none;
     margin-right: 20px;
 }
+
+
+/* @media screen and (max-width:480px) {
+    .navbar .logo {
+        display: none;
+    }
+
+    .navbar {
+        display: flex;
+        margin: 0;
+    }
+
+    .navbar li {
+        padding: 10px 30px;
+        text-align: center;
+    }
+
+} */

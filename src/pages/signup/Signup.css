@@ -6,3 +6,7 @@
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
     background: #fff;
 }
+
+.thumbnail-msg {
+    font-size: 0.6em;
+}

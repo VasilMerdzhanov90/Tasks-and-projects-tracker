@@ -1,15 +1,15 @@
 .sidebar {
-    width: 300px;
-    min-width: 300px;
+    width: 280px;
+    /* min-width: 300px; */
     background-color: var(--primary-color);
-    min-height: 100vh;
+    /* height: 100vh; */
     box-sizing: border-box;
     position: relative;
     color: #fff;
 }
 
 .sidebar-content {
-    position: fixed;
+    /* position: fixed; */
     width: inherit;
 }
 

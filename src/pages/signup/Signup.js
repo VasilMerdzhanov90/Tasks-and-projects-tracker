@@ -42,7 +42,6 @@ export default function Signup() {
 
     const handleFileChange = (e) => {
         setThumbnail(null);
-
         let selected = e.target.files[0];
 
         if (!selected) {
@@ -135,7 +134,7 @@ export default function Signup() {
                 {passwordError && <div className='error'>{passwordError}</div>}
             </label>
             <label>
-                <span>profile thumbnail:</span>
+                <span>profile avatar:</span>
                 <input
                     required
                     type="file"

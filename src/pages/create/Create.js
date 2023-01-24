@@ -3,7 +3,7 @@ import './Create.css'
 import React, { useEffect, useState } from 'react'
 import Select from 'react-select';
 import { useCollection } from '../../hooks/useCollection';
-import { timestamp } from '../../firebase/config';
+import { projectStorage, timestamp } from '../../firebase/config';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useFirestore } from '../../hooks/useFirestore';
 import { useNavigate } from 'react-router-dom';
@@ -29,11 +29,15 @@ export default function Create() {
     const [formError, setFormError] = useState(null);
 
     const [users, setUsers] = useState([]);
+    const [taskImage, setTaskImage] = useState(null);
+
+    const [taskImageError, setTaskImageError] = useState('');
 
     const { documents, error } = useCollection('users');
 
     const { user } = useAuthContext();
-    const { addDocument, response } = useFirestore('projects');
+    const { addDocument, updateDocument, response } = useFirestore('projects');
+
 
     //adding users in the setUsers for the SELECT
     useEffect(() => {
@@ -45,6 +49,18 @@ export default function Create() {
         }
 
     }, [documents])
+
+    const handleImageUpload = (e) => {
+        e.preventDefault()
+        setTaskImageError('');
+        const selected = e.target.files[0];
+
+        if (!selected.type.includes('image')) {
+            setTaskImageError('File must be an image!')
+            return
+        }
+        setTaskImage(selected)
+    }
 
 
     const handleSubmit = async (e) => {
@@ -84,8 +100,18 @@ export default function Create() {
             assignedUsersList,
             finished: false
         }
+        
+        if (taskImage != null) {
+            const uploadPath = `taskImages/${project.dueDate}/${taskImage.name}`;
+            const img = await projectStorage.ref(uploadPath).put(taskImage);
+
+            const imgUrl = await img.ref.getDownloadURL();
+
+            project.imgUrl = imgUrl;
+        }
 
         await addDocument(project);
+
         if (!response.error) {
             navigate('/');
         }
@@ -113,6 +139,14 @@ export default function Create() {
                         onChange={(e) => setDetails(e.target.value)}
                         value={details}
                     />
+                </label>
+                <label>
+                    <span>Upload image:</span>
+                    <input
+                        type="file"
+                        onChange={handleImageUpload}
+                    />
+                    {taskImageError && <p className='error'>{taskImageError}</p>}
                 </label>
                 <label>
                     <span>Set due date:</span>
