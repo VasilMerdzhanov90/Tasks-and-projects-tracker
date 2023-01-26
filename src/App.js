@@ -1,5 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext';
+import { useCollection } from './hooks/useCollection';
 
 
 //style
@@ -23,8 +24,18 @@ function App() {
     const { user, authIsReady } = useAuthContext();
 
 
+    const { documents } = useCollection('users');
+
+    // NEED TO REFACTOR THE USER SETTINGS !!!!!!!!!!!!!!!!!
+    let color = '';
+
+    if (documents && user !== null) {
+        const currentUser = documents.filter((x) => x.id === user.uid);
+        color = currentUser[0].userSettings.mainColor
+    }
+
     return (
-        <div className="App">
+        <div className="App" style={{ background: color }}>
 
             {authIsReady && (
                 <BrowserRouter>

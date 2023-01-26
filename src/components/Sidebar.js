@@ -8,13 +8,28 @@ import settings from '../assets/settings.svg'
 import { NavLink } from 'react-router-dom'
 import Avatar from './Avatar'
 import { useAuthContext } from '../hooks/useAuthContext'
+// import { useColor } from '../hooks/useColorTheme'
+import { useCollection } from '../hooks/useCollection'
+
 
 export default function Sidebar() {
 
     const { user } = useAuthContext();
+    const { documents, error } = useCollection('users');
+
+    // NEED TO REFACTOR THE USER SETTINGS !!!!!!!!!!!!!!!!!
+    let color = '';
+
+    if (documents) {
+        const currentUser = documents.filter((x) => x.id === user.uid);
+        color = currentUser[0].userSettings.sidebarColor
+    }
+
 
     return (
-        <div className='sidebar'>
+        <div className='sidebar'
+            style={{ background: color }}
+        >
             <div className='sidebar-content'>
                 <div className='user'>
                     <Avatar src={user.photoURL} />

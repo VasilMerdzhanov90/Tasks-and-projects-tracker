@@ -35,9 +35,12 @@
     color: var(--primary-color);
 }
 
+
 .filter-label {
+    display: flex;
     margin: 20px auto;
     max-width: 380px;
+    height: 40px;
 }
 
 .filter-label span {

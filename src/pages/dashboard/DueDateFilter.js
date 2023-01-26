@@ -16,6 +16,10 @@ export default function DueDateFilter({ projects, projectsSetter }) {
         })
         projectsSetter(filteredResult);
     }
+    const handleResetByDate = () => {
+        projectsSetter('reset');
+
+    }
 
     return (
         <label className='filter-label'>
@@ -25,6 +29,9 @@ export default function DueDateFilter({ projects, projectsSetter }) {
                 type="date"
                 onChange={handleDateFilter}
             />
-        </label>
+            <button className='btn'
+                onClick={handleResetByDate}
+            >RESET</button>
+        </label >
     )
 }

@@ -48,7 +48,11 @@ export default function Dashboard() {
         : null;
 
     const projectsSetter = (p) => {
-        setFilteredByDate(p);
+        if (p === 'reset') {
+            setFilteredByDate(null)
+        } else {
+            setFilteredByDate(p);
+        }
     }
 
     return (

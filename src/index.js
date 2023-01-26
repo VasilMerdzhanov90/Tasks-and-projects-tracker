@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { AuthContextProvider } from './context/AuthContext';
+// import { ColorThemeProvider } from './context/ColorThemeContext';
 
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,7 +18,9 @@ import { AuthContextProvider } from './context/AuthContext';
 ReactDOM.render(
   <React.StrictMode>
     <AuthContextProvider>
-      <App />
+      {/* <ColorThemeProvider > */}
+        <App />
+      {/* </ColorThemeProvider> */}
     </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
