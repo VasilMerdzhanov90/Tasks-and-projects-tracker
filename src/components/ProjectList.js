@@ -1,20 +1,21 @@
 import { Link } from 'react-router-dom'
 import Avatar from './Avatar'
 import './ProjectList.css'
+import translation from '../translations/translation.json'
 
-
-export default function ProjectList({ projects }) {
+export default function ProjectList({ projects, lang }) {
+    
     return (
         <div className='project-list'>
-            {projects.length === 0 && <p>No projects yet!</p>}
+            {projects.length === 0 && <p>{translation[lang].noProjectsMessage}</p>}
             {projects.map(project => (
                 <Link
                     to={`/projects/${project.id}`}
                     key={project.id}>
-                    <h4>Task: {project.name}</h4>
-                    <p>Due by: {project.dueDate.toDate().toDateString()}</p>
+                    <h4>{translation[lang].task}: {project.name}</h4>
+                    <p>{translation[lang].dueDate}: {project.dueDate.toDate().toDateString()}</p>
                     <div className='assigned-to'>
-                        <h4>Assigned to:</h4>
+                        <h4>{translation[lang].assignedTo}:</h4>
                         <ul>
                             {project.assignedUsersList.map(user => (
                                 <li key={user.photoURL}>

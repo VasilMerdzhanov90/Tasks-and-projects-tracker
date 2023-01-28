@@ -8,57 +8,46 @@ import settings from '../assets/settings.svg'
 import { NavLink } from 'react-router-dom'
 import Avatar from './Avatar'
 import { useAuthContext } from '../hooks/useAuthContext'
-// import { useColor } from '../hooks/useColorTheme'
-import { useCollection } from '../hooks/useCollection'
+
+import translation from '../translations/translation.json';
+
+export default function Sidebar({ currentUser, lang, sidebarColor }) {
 
 
-export default function Sidebar() {
 
     const { user } = useAuthContext();
-    const { documents, error } = useCollection('users');
-
-    // NEED TO REFACTOR THE USER SETTINGS !!!!!!!!!!!!!!!!!
-    let color = '';
-
-    if (documents) {
-        const currentUser = documents.filter((x) => x.id === user.uid);
-        color = currentUser[0].userSettings.sidebarColor
-    }
-
 
     return (
-        <div className='sidebar'
-            style={{ background: color }}
-        >
+        <div className='sidebar' style={{ background: sidebarColor }}>
             <div className='sidebar-content'>
                 <div className='user'>
                     <Avatar src={user.photoURL} />
-                    <p>Hello, {user.displayName}</p>
+                    <p>{translation[lang].greeting} {user.displayName}</p>
                 </div>
                 <nav className='links'>
                     <ul>
                         <li>
                             <NavLink to='/'>
                                 <img src={DashboardIcon} alt="" />
-                                <span>Dashboard</span>
+                                <span>{translation[lang].dashboard}</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to='/create'>
                                 <img src={AddIcon} alt="" />
-                                <span>New Task</span>
+                                <span>{translation[lang].newTask}</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to='/finished'>
                                 <img src={finish} alt="" />
-                                <span>Finished Tasks</span>
+                                <span>{translation[lang].finishedTasks}</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to='/settings'>
                                 <img src={settings} alt="" />
-                                <span>Settings</span>
+                                <span>{translation[lang].settings}</span>
                             </NavLink>
                         </li>
                     </ul>
@@ -66,4 +55,5 @@ export default function Sidebar() {
             </div>
         </div>
     )
+
 }

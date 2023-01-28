@@ -20,18 +20,20 @@ import Settings from './pages/settings/Settings';
 
 
 function App() {
-
+    let currentUser = '';
+    
     const { user, authIsReady } = useAuthContext();
-
-
     const { documents } = useCollection('users');
-
-    // NEED TO REFACTOR THE USER SETTINGS !!!!!!!!!!!!!!!!!
-    let color = '';
-
+    
+    
     if (documents && user !== null) {
-        const currentUser = documents.filter((x) => x.id === user.uid);
-        color = currentUser[0].userSettings.mainColor
+        currentUser = documents.filter((x) => x.id === user.uid)[0];
+    }
+    let color = '';
+    let lang = '';
+    if (currentUser) {
+        color = currentUser.userSettings.mainColor;
+        lang = currentUser.userSettings.language;
     }
 
     return (
@@ -39,13 +41,13 @@ function App() {
 
             {authIsReady && (
                 <BrowserRouter>
-                    {user && <Sidebar />}
+                    {user && currentUser && <Sidebar currentUser={currentUser} lang={lang} sidebarColor={currentUser.userSettings.sidebarColor} />}
                     <div className='container'>
                         <Navbar />
                         <Routes>
                             <Route
                                 path='/'
-                                element={user ? <Dashboard /> : <Navigate to='/login' />}
+                                element={user ? <Dashboard currentUser={currentUser} /> : <Navigate to='/login' />}
                             />
                             <Route
                                 path='/create'
@@ -61,11 +63,11 @@ function App() {
                             />
                             <Route
                                 path='/projects/:id'
-                                element={user ? <Project /> : <Navigate to='/login' />}
+                                element={user ? <Project currentUser={currentUser} /> : <Navigate to='/login' />}
                             />
                             <Route
                                 path='/finished'
-                                element={user ? <Finished /> : <Navigate to='/login' />}
+                                element={user ? <Finished currentUser={currentUser} /> : <Navigate to='/login' />}
                             />
                             <Route
                                 path='/settings'
@@ -73,7 +75,7 @@ function App() {
                             />
                         </Routes>
                     </div>
-                    {user && <OnlineUsers />}
+                    {user && currentUser && <OnlineUsers lang={lang} />}
                 </BrowserRouter>
             )}
         </div>

@@ -1,8 +1,7 @@
 .App {
   display: flex;
   /*  */
-  height: 100vh;
-  flex-wrap: wrap;
+  min-height: 100vh;
 }
 
 .App .container {
@@ -124,7 +123,8 @@
 
   /* styling the user list */
   .App .user-list {
-    margin-top: 18px;
+    /* margin-top: 18px; */
+    padding: 5px;
     width: 100%;
     height: 40vh;
     overflow-y: scroll;

@@ -8,6 +8,7 @@ export const useLogin = () => {
   const [isPending, setIsPending] = useState(false)
   const { dispatch, user } = useAuthContext()
 
+
   const login = async (email, password) => {
     setError(null)
     setIsPending(true)
@@ -15,7 +16,6 @@ export const useLogin = () => {
     try {
       // login
       const res = await projectAuth.signInWithEmailAndPassword(email, password)
-
       //setting user to online status = true!!!
       //we get the id from the res!!!!
       await projectFirestore
@@ -25,7 +25,6 @@ export const useLogin = () => {
 
       // dispatch login action
       dispatch({ type: 'LOGIN', payload: res.user })
-
       if (!isCancelled) {
         setIsPending(false)
         setError(null)

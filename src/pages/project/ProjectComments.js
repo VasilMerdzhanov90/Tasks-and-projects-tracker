@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { timestamp } from "../../firebase/config"
 import { useAuthContext } from "../../hooks/useAuthContext"
+import translation from '../../translations/translation.json'
 
 import { v4 as uuidv4 } from 'uuid';
 import { useFirestore } from "../../hooks/useFirestore";
@@ -9,7 +10,7 @@ import { formatDistanceToNow } from "date-fns";
 
 
 
-export default function ProjectComments({ project }) {
+export default function ProjectComments({ project, lang }) {
 
     const [newComment, setNewComment] = useState('');
     const { updateDocument, response } = useFirestore('projects')
@@ -34,7 +35,7 @@ export default function ProjectComments({ project }) {
 
     return (
         <div className="project-comments">
-            <h4>Task Comments</h4>
+            <h4>{translation[lang].taskComments}</h4>
             <ul>
                 {project.comments.length > 0 && project.comments.map(comment => (
                     <li key={comment.id}>
@@ -54,13 +55,13 @@ export default function ProjectComments({ project }) {
             <form onSubmit={handleSubmit} className="add-comment">
                 <label>
                     <textarea
-                    placeholder="type here here to add a comment"
+                        placeholder={translation[lang].placeholderComments}
                         required
                         onChange={(e) => setNewComment(e.target.value)}
                         value={newComment}
                     ></textarea>
                 </label>
-                <button className="btn">Add Comment</button>
+                <button className="btn">{translation[lang].addComment}</button>
             </form>
         </div>
     )

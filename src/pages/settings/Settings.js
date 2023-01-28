@@ -1,26 +1,29 @@
 import { useState } from 'react';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useFirestore } from '../../hooks/useFirestore';
+import { useNavigate } from 'react-router-dom';
+import Select from 'react-select';
 import './Settings.css'
-// import { useColor } from '../../hooks/useColorTheme'
 
 export default function Settings() {
+    const navigate = useNavigate('/');
+    const colorSidebarOptions = ['#8d69f1', 'rgb(179, 179, 179)', 'rgb(110, 110, 249)', '#f5c773'];
+    const colorMainOptions = ['#f4f4f4', 'rgba(229, 223, 255, 0.73)'];
 
-    const colorSidebarOptions = ['#8d69f1', '#dddcdc', '#4f4ff3', '#f5c773'];
-    const colorMainOptions = ['#f4f4f4', 'rgb(215, 210, 210)'];
-
+    const categories = [
+        { value: 'bg', label: 'Български' },
+        { value: 'en', label: 'English' },
+    ];
 
     const { user } = useAuthContext();
-    
+
     const { updateDocument } = useFirestore('users');
 
-    // const { changeSidebarColor, changeMainColor } = useColor()
 
-    // const [sidebarColor, setSidebarColor] = useState('#8d69f1');
-    // const [mainColor, setMainColor] = useState('#f4f4f4');
-    
-    const [sidebarColor, setSidebarColor] = useState('');
-    const [mainColor, setMainColor] = useState('');
+    const [sidebarColor, setSidebarColor] = useState('#8d69f1');
+    const [mainColor, setMainColor] = useState('#f4f4f4');
+    const [language, setLanguage] = useState('en');
+
 
     const [isPending, setIsPending] = useState(false);
 
@@ -28,20 +31,32 @@ export default function Settings() {
         setIsPending(true)
         const userSettings = {
             sidebarColor,
-            mainColor
+            mainColor,
+            language
         };
+        // if (sidebarColor !== '#8d69f1') {
+        //     userSettings.sidebarColor = sidebarColor;
+        // }
+        // if (mainColor !== '#f4f4f4') {
+        //     userSettings.mainColor = mainColor;
+        // }
+        // if (language !== 'en') {
+        //     userSettings.language = language;
+        // };
         updateDocument(user.uid, { userSettings })
         setIsPending(false)
+        navigate('/')
     }
 
     return (
         <div className="settings-container">
             <div className="settings">
                 <p className="setting-title">Main language Selector:</p>
-                <select>
-                    <option value="ENGLISH" key="eng">English</option>
-                    <option value="БЪЛГАРСКИ" key="bg">Български</option>
-                </select>
+                <Select
+                    className='select-lang'
+                    onChange={(option) => setLanguage(option.value)}
+                    options={categories}
+                />
             </div>
             <div className="settings">
                 <p className="setting-title">Theme color selector:</p>
@@ -51,7 +66,6 @@ export default function Settings() {
                     {colorSidebarOptions.map(x => {
                         return (
                             <span
-                                // onClick={() => changeSidebarColor(x)}
                                 key={x}
                                 style={{ backgroundColor: x }}
                                 onClick={() => setSidebarColor(x)}

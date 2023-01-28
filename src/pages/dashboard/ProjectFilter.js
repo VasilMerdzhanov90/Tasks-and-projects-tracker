@@ -1,9 +1,8 @@
-const filterList = ['all', 'assigned', 'date', 'development', 'design', 'marketing', 'sales', 
-// 'todays tasks' <-- TODO!!!!
-];
+// const filterList = ['all', 'assigned', 'date', 'development', 'design', 'marketing', 'sales'];
+import translation from '../../translations/translation.json'
+export default function ProjectFilter({ currentFilter, changeFilter, lang }) {
 
-export default function ProjectFilter({ currentFilter, changeFilter }) {
-
+    const filterList = translation[lang].filterList;
 
     const handleClick = (newFilter) => {
         changeFilter(newFilter);

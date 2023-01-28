@@ -1,7 +1,7 @@
 import './Avatar.css'
 
 
-export default function Avatar({ src }) {
+export default function Avatar({ src}) {
     return (
         <div className='avatar'>
             <img src={src} alt="O" />
