@@ -46,6 +46,10 @@ export default function Dashboard() {
         : null;
 
     const projectsSetter = (p) => {
+        if (p === 'reset') {
+            setFilteredByDate(null);
+            return
+        }
         setFilteredByDate(p);
     }
 
@@ -63,7 +67,8 @@ export default function Dashboard() {
             {currentFilter === 'date' &&
                 <DueDateFilter projects={documents}
                     projectsSetter={projectsSetter}
-                />}
+                />
+            }
 
             {filteredByDate &&
                 <ProjectList projects={filteredByDate} />

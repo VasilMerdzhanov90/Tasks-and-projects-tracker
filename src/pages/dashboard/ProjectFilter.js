@@ -1,4 +1,4 @@
-const filterList = ['all', 'assigned to me', 'date', 'development', 'design', 'marketing', 'sales', 'todays tasks'];
+const filterList = ['all', 'assigned to me', 'date', 'development', 'design', 'marketing', 'sales'];
 
 export default function ProjectFilter({ currentFilter, changeFilter }) {
 

@@ -33,10 +33,10 @@ export default function Create() {
 
     const [taskImageError, setTaskImageError] = useState('');
 
-    const { documents, error } = useCollection('users');
+    const { documents } = useCollection('users');
 
     const { user } = useAuthContext();
-    const { addDocument, updateDocument, response } = useFirestore('projects');
+    const { addDocument, response } = useFirestore('projects');
 
 
     //adding users in the setUsers for the SELECT
@@ -100,7 +100,7 @@ export default function Create() {
             assignedUsersList,
             finished: false
         }
-        
+
         if (taskImage != null) {
             const uploadPath = `taskImages/${project.dueDate}/${taskImage.name}`;
             const img = await projectStorage.ref(uploadPath).put(taskImage);

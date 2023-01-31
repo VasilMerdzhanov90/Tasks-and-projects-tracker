@@ -45,3 +45,19 @@
     font-weight: bold;
     color: var(--heading-color);
 }
+
+.filter-label .reset-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.filter-label .reset-filter button {
+    margin-left: 6px;
+    padding: 3px 8px;
+    border-color: var(--primary-color);
+    background-color: transparent;
+    color: var(--primary-color);
+    border-radius: 4px;
+}

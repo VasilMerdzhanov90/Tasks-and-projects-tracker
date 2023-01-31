@@ -19,12 +19,11 @@ import Finished from './pages/finished/Finished';
 
 function App() {
 
-    const { user, authIsReady } = useAuthContext();
+    const { user, authIsReady, userData } = useAuthContext();
 
 
     return (
         <div className="App">
-
             {authIsReady && (
                 <BrowserRouter>
                     {user && <Sidebar />}

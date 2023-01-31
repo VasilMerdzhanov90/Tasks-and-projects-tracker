@@ -3,7 +3,7 @@ import Avatar from './Avatar'
 import './ProjectList.css'
 
 
-export default function ProjectList({ projects, dateElement }) {
+export default function ProjectList({ projects }) {
 
     return (
         <div className='project-list'>

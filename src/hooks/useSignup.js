@@ -40,6 +40,18 @@ export const useSignup = () => {
                 });
 
 
+            const currentUser = await projectFirestore
+                .collection('users')
+                .doc(res.user.uid);
+
+            currentUser.get().then((doc) => {
+                if (doc.exists) {
+                    dispatch({ type: 'USER_DATA', payload: doc.data() })
+                }
+            })
+
+            
+
             // dispatch login action
             dispatch({ type: 'LOGIN', payload: res.user })
 
