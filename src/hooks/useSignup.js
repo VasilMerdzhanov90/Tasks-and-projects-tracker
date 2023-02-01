@@ -27,7 +27,10 @@ export const useSignup = () => {
             const imgUrl = await img.ref.getDownloadURL();
 
             // add display name and thumbnail to the user
-            await res.user.updateProfile({ displayName, photoURL: imgUrl })
+            await res.user.updateProfile({
+                displayName,
+                photoURL: imgUrl
+            })
 
             //create a user document
             await projectFirestore
@@ -36,7 +39,12 @@ export const useSignup = () => {
                 .set({
                     online: true,
                     displayName,
-                    photoURL: imgUrl
+                    photoURL: imgUrl,
+                    userSettings: {
+                        language: 'en',
+                        sidebarColor: 'rgb(141, 105, 241)',
+                        mainTheme: 'light'
+                    }
                 });
 
 
@@ -50,7 +58,7 @@ export const useSignup = () => {
                 }
             })
 
-            
+
 
             // dispatch login action
             dispatch({ type: 'LOGIN', payload: res.user })

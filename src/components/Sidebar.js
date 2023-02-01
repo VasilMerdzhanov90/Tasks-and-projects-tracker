@@ -9,39 +9,42 @@ import { NavLink } from 'react-router-dom'
 import Avatar from './Avatar'
 import { useAuthContext } from '../hooks/useAuthContext'
 
-export default function Sidebar() {
+import translation from '../translations/translation.json'
 
-    const { user } = useAuthContext();
+export default function Sidebar({ language }) {
+    
+    const { user, userData } = useAuthContext();
+    const sidebarColor = userData?.userSettings.sidebarColor;
 
     return (
-        <div className='sidebar'>
+        <div className='sidebar' style={{ backgroundColor: sidebarColor }}>
             <div className='sidebar-content'>
                 <div className='user'>
                     <Avatar src={user.photoURL} />
-                    <p>Hello, {user.displayName}</p>
+                    <p>{translation[language].greeting}{user.displayName}</p>
                 </div>
                 <nav className='links'>
                     <ul>
                         <li>
                             <NavLink to='/'>
                                 <img src={DashboardIcon} alt="" />
-                                <span>Dashboard</span>
+                                <span>{translation[language].dashboard}</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to='/create'>
                                 <img src={AddIcon} alt="" />
-                                <span>New Task</span>
+                                <span>{translation[language].newTask}</span>
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to='/finished'>
                                 <img src={finish} alt="" />
-                                <span>Finished Tasks</span>
+                                <span>{translation[language].finishedTasks}</span>
                             </NavLink>
                             <NavLink to='/settings'>
                                 <img src={settings} alt="" />
-                                <span>Settings</span>
+                                <span>{translation[language].settings}</span>
                             </NavLink>
                         </li>
                     </ul>

@@ -22,13 +22,20 @@ function App() {
 
     const { user, authIsReady, userData } = useAuthContext();
 
+    const colors = {
+        dark: '#adadad',
+        light: '#f4f4f4'
+    };
+
+    const containerColor = userData?.userSettings.mainTheme;
+    const language = userData?.userSettings.language;
 
     return (
         <div className="App">
             {authIsReady && (
                 <BrowserRouter>
-                    {user && <Sidebar />}
-                    <div className='container'>
+                    {user && userData && <Sidebar language={language} />}
+                    <div className='container' style={{ backgroundColor: colors[containerColor] }}>
                         <Navbar />
                         <Routes>
                             <Route
@@ -62,7 +69,7 @@ function App() {
 
                         </Routes>
                     </div>
-                    {user && <OnlineUsers />}
+                    {user && userData && <OnlineUsers color={colors[containerColor]}  language={language} />}
                 </BrowserRouter>
             )}
         </div>

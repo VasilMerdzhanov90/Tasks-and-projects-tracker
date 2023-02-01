@@ -1,0 +1,60 @@
+{
+  "bg": {
+    "greeting": "Здравей, ",
+    "dashboard": "основен изглед",
+    "dashboardTitle": "Основен изглед",
+    "newTask": "нова задача",
+    "finishedTasks": "завършени задачи",
+    "settings": "настройки",
+    "onlineUsers": "Потребители",
+    "noProjectsMessage": "Към момента няма задачи!",
+    "task": "Задача",
+    "dueDate": "Крайна дата",
+    "assignedTo": "Зададена на",
+    "filterList": [
+      "всички",
+      "назначени",
+      "разработка",
+      "дизайн",
+      "маркетинг",
+      "продажби"
+    ],
+    "createdBy": "Създадена от",
+    "details": "Детайли",
+    "deleteTask": "Изтрий задачата",
+    "markedAsCompleted": "Маркирай като завършена",
+    "completedBy": "ТАЗИ ЗАДАЧЕ Е ЗАВЪРШЕНА ОТ:",
+    "taskComments": "Коментари по задачата",
+    "addComment": "Добави коментар",
+    "placeholderComments": "пишете тук, за да добавите коментар"
+  },
+  "en": {
+    "greeting": "Hello, ",
+    "dashboard": "Dashboard",
+    "dashboardTitle": "Dashboard",
+    "newTask": "New Task",
+    "finishedTasks": "Finished Tasks",
+    "settings": "Settings",
+    "onlineUsers": "Users",
+    "noProjectsMessage": "No tasks yet!",
+    "task": "Task",
+    "dueDate": "Due date",
+    "assignedTo": "Assigned to",
+    "filterList": [
+      "all",
+      "assigned",
+      "development",
+      "design",
+      "marketing",
+      "sales"
+    ],
+    "createdBy": "Created By:",
+    "details": "Details:",
+    "deleteTask": "Delete Task",
+    "markedAsCompleted": "Mark as finished",
+    "completedBy": "THIS TASK HAS BEEN FINISHED BY:",
+    "taskComments": "Task comments",
+    "addComment": "Add comment",
+    "placeholderComments": "type here, to add a comment"
+  }
+}

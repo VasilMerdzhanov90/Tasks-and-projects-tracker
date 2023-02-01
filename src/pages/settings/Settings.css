@@ -2,8 +2,11 @@
     margin-top: 35px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    width: 80%;
+}
+
+.settings-container Select {
+    cursor: pointer;
 }
 
 .settings-container p {
@@ -17,12 +20,24 @@
 }
 
 .settings-container .sidebar-color {
-    margin: 35px 0;
+    margin-bottom: 35px;
 }
 
 .settings-container .sidebar-color .span-color {
     display: inline-block;
-    
-    width: 28px;
-    height: 28px;
+    margin-left: 22px;
+    min-width: 35px;
+    min-height: 35px;
+    border: 1px solid var(--heading-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.settings-container .btn-settings {
+    margin-top: 35px;
+    width: 200px;
+}
+
+.settings-container .msg {
+    margin-top: 15px;
 }
