@@ -1,0 +1,28 @@
+.settings-container {
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-container p {
+    margin: 0 0 10px 20px;
+    font-size: 1.1em;
+    color: var(--heading-color);
+}
+
+.settings-container .language {
+    margin: 35px 0;
+}
+
+.settings-container .sidebar-color {
+    margin: 35px 0;
+}
+
+.settings-container .sidebar-color .span-color {
+    display: inline-block;
+    
+    width: 28px;
+    height: 28px;
+}

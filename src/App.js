@@ -15,6 +15,7 @@ import Project from './pages/project/Project';
 import Signup from './pages/signup/Signup';
 import OnlineUsers from './components/OnlineUsers';
 import Finished from './pages/finished/Finished';
+import Settings from './pages/settings/Settings';
 
 
 function App() {
@@ -54,6 +55,11 @@ function App() {
                                 path='/finished'
                                 element={user ? <Finished /> : <Navigate to='/login' />}
                             />
+                            <Route
+                                path='/settings'
+                                element={user ? <Settings /> : <Navigate to='/login' />}
+                            />
+
                         </Routes>
                     </div>
                     {user && <OnlineUsers />}
