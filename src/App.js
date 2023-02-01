@@ -1,13 +1,9 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext';
 
-
-//style
 import './App.css'
-//navbar
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-//links
 import Create from './pages/create/Create';
 import Dashboard from './pages/dashboard/Dashboard';
 import Login from './pages/login/Login';
@@ -40,11 +36,11 @@ function App() {
                         <Routes>
                             <Route
                                 path='/'
-                                element={user ? <Dashboard /> : <Navigate to='/login' />}
+                                element={user ? <Dashboard language={language} /> : <Navigate to='/login' />}
                             />
                             <Route
                                 path='/create'
-                                element={user ? <Create /> : <Navigate to='/login' />}
+                                element={user && language ? <Create language={language} /> : <Navigate to='/login' />}
                             />
                             <Route
                                 path='/login'
@@ -56,20 +52,20 @@ function App() {
                             />
                             <Route
                                 path='/projects/:id'
-                                element={user ? <Project /> : <Navigate to='/login' />}
+                                element={user ? <Project language={language} /> : <Navigate to='/login' />}
                             />
                             <Route
                                 path='/finished'
-                                element={user ? <Finished /> : <Navigate to='/login' />}
+                                element={user && language ? <Finished language={language} /> : <Navigate to='/login' />}
                             />
                             <Route
                                 path='/settings'
-                                element={user ? <Settings /> : <Navigate to='/login' />}
+                                element={userData ? <Settings lang={language} /> : <Navigate to='/login' />}
                             />
 
                         </Routes>
                     </div>
-                    {user && userData && <OnlineUsers color={colors[containerColor]}  language={language} />}
+                    {user && userData && <OnlineUsers color={colors[containerColor]} language={language} />}
                 </BrowserRouter>
             )}
         </div>

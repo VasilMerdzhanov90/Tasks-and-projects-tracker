@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom'
-import Avatar from './Avatar'
-import './ProjectList.css'
+import './ProjectList.css';
+import { Link } from 'react-router-dom';
+import Avatar from './Avatar';
 
+import translation from '../translations/translation.json';
 
-export default function ProjectList({ projects }) {
+export default function ProjectList({ projects, language }) {
 
     return (
         <div className='project-list'>
@@ -12,10 +13,10 @@ export default function ProjectList({ projects }) {
                 <Link
                     to={`/projects/${project.id}`}
                     key={project.id}>
-                    <h4>Task: {project.name}</h4>
-                    <p>Due by: {project.dueDate.toDate().toDateString()}</p>
+                    <h4>{translation[language].task}: {project.name}</h4>
+                    <p>{translation[language].dueDate}: {project.dueDate.toDate().toDateString()}</p>
                     <div className='assigned-to'>
-                        <h4>Assigned to:</h4>
+                        <h4>{translation[language].assignedTo}:</h4>
                         <ul>
                             {project.assignedUsersList.map(user => (
                                 <li key={user.photoURL}>

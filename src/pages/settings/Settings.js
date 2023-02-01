@@ -6,10 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import { useFirestore } from '../../hooks/useFirestore';
 import { useAuthContext } from '../../hooks/useAuthContext';
 
+import translation from '../../translations/translation.json';
 
-export default function Settings() {
+export default function Settings({ lang }) {
+
     const { user } = useAuthContext();
     const { updateDocument } = useFirestore('users');
+
     const navigate = useNavigate();
 
     const [isPending, setIsPending] = useState(false);
@@ -53,14 +56,14 @@ export default function Settings() {
         <div className="settings-container">
 
             <div className="language">
-                <p>Select main language:</p>
+                <p>{translation[lang].settingsMainLanguage}:</p>
                 <Select
                     options={options}
                     onChange={(option) => setLanguage(option)}
                 />
             </div>
             <div className="sidebar-color">
-                <p>Select sidebar color:</p>
+                <p>{translation[lang].settingsSidebarColor}:</p>
                 {optionsSidebarColor.map((x) => {
                     return (
                         <span
@@ -73,27 +76,37 @@ export default function Settings() {
                 })}
             </div>
             <div className="main-color">
-                <p>Select main screen color:</p>
+                <p>{translation[lang].settingsMainTheme}:</p>
                 <Select
                     options={optionsMainScreenColor}
                     onChange={(option) => setMainTheme(option)}
                 />
             </div>
-            {language
-                && sidebarColor
-                && mainTheme
-                ? <p className='msg'>You selected: {language.label}, sidebar color as {sidebarColor.label} and {mainTheme.label} theme.</p>
-                : <p className='msg'>Please select all options!</p>
+
+            {language ?
+                <p className='msg'>You selected: {language.label}</p>
+                : <p className='msg'>{translation[lang].languageMsg}</p>
             }
-            <p className='error msg'>AFTER CHANGES, YOU NEED TO REFRESH YOUR BROWSER!</p>
+
+            {sidebarColor ?
+                <p className='msg'>sidebar color as {sidebarColor.label}</p>
+                : <p className='msg'>{translation[lang].sidebarMsg}</p>
+            }
+
+            {mainTheme ?
+                <p className='msg'>and {mainTheme.label} theme</p>
+                : <p className='msg'>{translation[lang].mainThemeMsg}</p>
+            }
+
+            <p className='error msg'>{translation[lang].afterChangesMsg}</p>
 
             {isPending ?
-                <button className='btn btn-settings'>Saving...</button>
+                <button className='btn btn-settings'>{translation[lang].savePengingBtn}</button>
                 : <button
                     className='btn btn-settings'
                     onClick={handleSaveSettings}
                 >
-                    Save settings
+                    {translation[lang].saveSettingsBtn}
                 </button>
             }
         </div>

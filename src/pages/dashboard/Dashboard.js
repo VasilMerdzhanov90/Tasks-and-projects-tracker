@@ -5,10 +5,9 @@ import ProjectFilter from './ProjectFilter';
 import { useState } from 'react';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import DueDateFilter from './DueDateFilter';
+import translation from '../../translations/translation.json';
 
-
-export default function Dashboard() {
-
+export default function Dashboard({ language }) {
     const { user } = useAuthContext();
 
     const { documents, error } = useCollection('projects', ['finished', '==', false]);
@@ -24,6 +23,8 @@ export default function Dashboard() {
     const projects = documents
         ? documents.filter((document) => {
             switch (currentFilter) {
+                case 'всички':
+                    return true
                 case 'all':
                     return true
                 case 'assigned to me':
@@ -34,6 +35,14 @@ export default function Dashboard() {
                         }
                     });
                     return assignedToMe;
+                case 'разработка':
+                    return document.category === 'development';
+                case 'дизайн':
+                    return document.category === 'design';
+                case 'продажби':
+                    return document.category === 'sales';
+                case 'маркетинг':
+                    return document.category === 'marketing';
                 case 'development':
                 case 'design':
                 case 'sales':
@@ -53,29 +62,36 @@ export default function Dashboard() {
         setFilteredByDate(p);
     }
 
-    return (
-        <div>
-            <h2 className='page-title'>Dashboard</h2>
-            {error && <p className='error'>{error}</p>}
+    if (language) {
+        return (
+            <div>
+                <h2 className='page-title'>{translation[language].dashboardTitle}</h2>
+                {error && <p className='error'>{error}</p>}
 
-            {documents &&
-                <ProjectFilter
-                    currentFilter={currentFilter}
-                    changeFilter={changeFilter} />
-            }
+                {documents &&
+                    <ProjectFilter
+                        currentFilter={currentFilter}
+                        changeFilter={changeFilter}
+                        language={language} />
+                }
 
-            {currentFilter === 'date' &&
-                <DueDateFilter projects={documents}
-                    projectsSetter={projectsSetter}
-                />
-            }
+                {currentFilter === 'date' ||
+                    currentFilter === 'дата' &&
+                    <DueDateFilter projects={documents}
+                        projectsSetter={projectsSetter}
+                    />
+                }
 
-            {filteredByDate &&
-                <ProjectList projects={filteredByDate} />
-            }
-            {projects && !filteredByDate &&
-                <ProjectList projects={projects} />
-            }
-        </div>
-    )
+                {filteredByDate &&
+                    <ProjectList language={language} projects={filteredByDate} />
+                }
+                {projects && !filteredByDate &&
+                    <ProjectList language={language} projects={projects} />
+                }
+            </div>
+        )
+    } else {
+        return <p>Loading</p>
+    }
+
 }
