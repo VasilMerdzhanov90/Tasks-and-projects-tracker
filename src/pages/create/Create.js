@@ -136,6 +136,7 @@ export default function Create({ language }) {
                 <label>
                     <span>{translation[language].taskDetails}:</span>
                     <textarea
+                        className='text-area'
                         type="text"
                         required
                         onChange={(e) => setDetails(e.target.value)}

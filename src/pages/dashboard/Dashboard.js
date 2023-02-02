@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import DueDateFilter from './DueDateFilter';
 import translation from '../../translations/translation.json';
+import Loader from '../../components/Loader';
 
 export default function Dashboard({ language }) {
     const { user } = useAuthContext();
@@ -27,6 +28,7 @@ export default function Dashboard({ language }) {
                     return true
                 case 'all':
                     return true
+                    case 'назначени':
                 case 'assigned to me':
                     let assignedToMe = false;
                     document.assignedUsersList.forEach((u) => {
@@ -91,7 +93,7 @@ export default function Dashboard({ language }) {
             </div>
         )
     } else {
-        return <p>Loading</p>
+        return <Loader />
     }
 
 }

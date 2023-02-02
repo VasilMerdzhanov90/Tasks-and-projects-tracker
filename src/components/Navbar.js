@@ -17,7 +17,7 @@ export default function Navbar() {
             <ul>
                 <li className='logo'>
                     <img src={Temple} alt="" />
-                    <span>The Final Project</span>
+                    <span>Task Manager</span>
                 </li>
                 {!user && <>
                     <li> <Link to='/login'>Login</Link> </li>

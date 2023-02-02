@@ -1,0 +1,21 @@
+.loader {
+    position: absolute;
+    left: calc(50% - 110px);
+    top: calc(50% - 110px);
+    border: 13px solid rgb(245, 199, 115);
+    border-top: 13px solid rgb(225, 117, 117);
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

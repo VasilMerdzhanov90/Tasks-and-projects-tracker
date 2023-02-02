@@ -12,7 +12,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import translation from '../translations/translation.json'
 
 export default function Sidebar({ language }) {
-    
+
     const { user, userData } = useAuthContext();
     const sidebarColor = userData?.userSettings.sidebarColor;
 
@@ -42,6 +42,8 @@ export default function Sidebar({ language }) {
                                 <img src={finish} alt="" />
                                 <span>{translation[language].finishedTasks}</span>
                             </NavLink>
+                        </li>
+                        <li>
                             <NavLink to='/settings'>
                                 <img src={settings} alt="" />
                                 <span>{translation[language].settings}</span>

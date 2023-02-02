@@ -1,5 +1,5 @@
 .settings-container {
-    margin-top: 35px;
+    /* margin-top: 20px; */
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -16,11 +16,11 @@
 }
 
 .settings-container .language {
-    margin: 35px 0;
+    margin: 20px 0;
 }
 
 .settings-container .sidebar-color {
-    margin-bottom: 35px;
+    margin-bottom: 20px;
 }
 
 .settings-container .sidebar-color .span-color {
@@ -34,10 +34,12 @@
 }
 
 .settings-container .btn-settings {
-    margin-top: 35px;
-    width: 200px;
+    margin-top: 20px;
+    max-width: 220px;
 }
-
-.settings-container .msg {
-    margin-top: 15px;
+.settings-container .msg:first-of-type {
+    margin-top: 12px;
 }
+/* .settings-container .msg {
+    margin-top: 10px;
+} */
