@@ -7,7 +7,6 @@ import { useFirestore } from '../../hooks/useFirestore'
 import translation from '../../translations/translation.json';
 
 export default function ProjectSummary({ project, language }) {
-    console.log(language)
     const { deleteDocument, finishDocument } = useFirestore('projects');
     const { user } = useAuthContext();
     const navigate = useNavigate();

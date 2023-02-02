@@ -19,7 +19,6 @@ const categories = [
 
 
 export default function Create({ language }) {
-    console.log(language)
     const navigate = useNavigate();
 
     const [name, setName] = useState('');
