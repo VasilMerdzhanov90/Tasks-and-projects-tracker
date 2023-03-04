@@ -2,6 +2,7 @@
 SPA for assigned tasks for users.
 
 Build with React and Firebase for database and authentication, link for deployed project: https://finalproject-1e3fd.web.app/
+Only registered and signed users can make tasks and explore existing ones.
 
  - Multi language application(Bulgarian and English), with personal user settings(set color themes).
  - Optimised for mobile and desktop use.
@@ -13,3 +14,4 @@ Build with React and Firebase for database and authentication, link for deployed
  - Authentication: Create new user with email and password.
  - Firestore storage - for avatar and task images.
  - Hosted with firebase.
+ - Guards for routing: can not open content if user is not logged in.
