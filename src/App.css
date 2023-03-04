@@ -1,7 +1,7 @@
 .App {
   display: flex;
   /*  */
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .App .container {
@@ -53,8 +53,8 @@
   }
 
   .App .sidebar .sidebar-content .user p {
+    display: none;
     margin-left: 4px;
-
     font-size: 0.8em;
   }
 
@@ -62,6 +62,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
     margin: 0px;
     padding: 0px;
   }
@@ -132,11 +133,13 @@
 
 @media screen and (min-width:769px) and (max-width:1024px) {
   .App .sidebar {
-    width: 170px;
+    /* width: 170px; */
+    width: 200px;
   }
 
   .App .sidebar .sidebar-content {
-    width: 170px;
+    /* width: 170px; */
+    width: 200px;
     display: flex;
     flex-direction: column;
     justify-content: left;
@@ -155,6 +158,6 @@
   }
 
   .App .user-list {
-    max-width: 200px;
+    max-width: 190px;
   }
 }

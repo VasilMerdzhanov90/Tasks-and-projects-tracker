@@ -7,10 +7,10 @@ import { useFirestore } from "../../hooks/useFirestore";
 import Avatar from "../../components/Avatar";
 import { formatDistanceToNow } from "date-fns";
 
+import translation from '../../translations/translation.json';
 
 
-export default function ProjectComments({ project }) {
-
+export default function ProjectComments({ project, language }) {
     const [newComment, setNewComment] = useState('');
     const { updateDocument, response } = useFirestore('projects')
     const { user } = useAuthContext();
@@ -34,7 +34,7 @@ export default function ProjectComments({ project }) {
 
     return (
         <div className="project-comments">
-            <h4>Task Comments</h4>
+            <h4>{translation[language].taskComments}</h4>
             <ul>
                 {project.comments.length > 0 && project.comments.map(comment => (
                     <li key={comment.id}>
@@ -54,13 +54,13 @@ export default function ProjectComments({ project }) {
             <form onSubmit={handleSubmit} className="add-comment">
                 <label>
                     <textarea
-                    placeholder="type here here to add a comment"
+                        placeholder={translation[language].placeholderComments}
                         required
                         onChange={(e) => setNewComment(e.target.value)}
                         value={newComment}
                     ></textarea>
                 </label>
-                <button className="btn">Add Comment</button>
+                <button className="btn">{translation[language].addComment}</button>
             </form>
         </div>
     )

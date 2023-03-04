@@ -1,12 +1,10 @@
 import './Navbar.css'
 import Temple from '../assets/temple.svg.svg';
 
-import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 
-import { getDate, getDay, getDayOfYear, getHours, getMinutes, getMonth, getSeconds } from 'date-fns';
 
 export default function Navbar() {
     const { logout, isPending } = useLogout();
@@ -19,7 +17,7 @@ export default function Navbar() {
             <ul>
                 <li className='logo'>
                     <img src={Temple} alt="" />
-                    <span>The Final Project</span>
+                    <span>Task Manager</span>
                 </li>
                 {!user && <>
                     <li> <Link to='/login'>Login</Link> </li>

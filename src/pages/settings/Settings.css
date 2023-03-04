@@ -1,0 +1,45 @@
+.settings-container {
+    /* margin-top: 20px; */
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.settings-container Select {
+    cursor: pointer;
+}
+
+.settings-container p {
+    margin: 0 0 10px 20px;
+    font-size: 1.1em;
+    color: var(--heading-color);
+}
+
+.settings-container .language {
+    margin: 20px 0;
+}
+
+.settings-container .sidebar-color {
+    margin-bottom: 20px;
+}
+
+.settings-container .sidebar-color .span-color {
+    display: inline-block;
+    margin-left: 22px;
+    min-width: 35px;
+    min-height: 35px;
+    border: 1px solid var(--heading-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.settings-container .btn-settings {
+    margin-top: 20px;
+    max-width: 220px;
+}
+.settings-container .msg:first-of-type {
+    margin-top: 12px;
+}
+/* .settings-container .msg {
+    margin-top: 10px;
+} */

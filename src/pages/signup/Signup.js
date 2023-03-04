@@ -17,7 +17,7 @@ export default function Signup() {
     const [usernameError, setUsernameError] = useState('');
 
     //email validator with regexp
-    const validateEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    const validateEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 
     //import the hook for signup
     const { signup, isPending, error } = useSignup();

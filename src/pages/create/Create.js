@@ -8,6 +8,7 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 import { useFirestore } from '../../hooks/useFirestore';
 import { useNavigate } from 'react-router-dom';
 
+import translation from '../../translations/translation.json';
 
 const categories = [
     { value: 'development', label: 'Development' },
@@ -17,7 +18,7 @@ const categories = [
 ];
 
 
-export default function Create() {
+export default function Create({ language }) {
     const navigate = useNavigate();
 
     const [name, setName] = useState('');
@@ -33,11 +34,10 @@ export default function Create() {
 
     const [taskImageError, setTaskImageError] = useState('');
 
-    const { documents, error } = useCollection('users');
+    const { documents } = useCollection('users');
 
     const { user } = useAuthContext();
-    const { addDocument, updateDocument, response } = useFirestore('projects');
-
+    const { addDocument, response } = useFirestore('projects');
 
     //adding users in the setUsers for the SELECT
     useEffect(() => {
@@ -100,7 +100,7 @@ export default function Create() {
             assignedUsersList,
             finished: false
         }
-        
+
         if (taskImage != null) {
             const uploadPath = `taskImages/${project.dueDate}/${taskImage.name}`;
             const img = await projectStorage.ref(uploadPath).put(taskImage);
@@ -118,12 +118,13 @@ export default function Create() {
     }
 
     return (
+
         <div className='create-form'>
-            <h2 className='page-title'>Create a new Task</h2>
+            <h2 className='page-title'>{translation[language].createTask}</h2>
 
             <form onSubmit={handleSubmit}>
                 <label>
-                    <span>Task name:</span>
+                    <span>{translation[language].taskName}:</span>
                     <input
                         type="text"
                         required
@@ -132,8 +133,9 @@ export default function Create() {
                     />
                 </label>
                 <label>
-                    <span>Task details:</span>
+                    <span>{translation[language].taskDetails}:</span>
                     <textarea
+                        className='text-area'
                         type="text"
                         required
                         onChange={(e) => setDetails(e.target.value)}
@@ -141,7 +143,7 @@ export default function Create() {
                     />
                 </label>
                 <label>
-                    <span>Upload image:</span>
+                    <span>{translation[language].uploadImage}:</span>
                     <input
                         type="file"
                         onChange={handleImageUpload}
@@ -149,7 +151,7 @@ export default function Create() {
                     {taskImageError && <p className='error'>{taskImageError}</p>}
                 </label>
                 <label>
-                    <span>Set due date:</span>
+                    <span>{translation[language].setDueDate}:</span>
                     <input
                         type="date"
                         required
@@ -158,14 +160,14 @@ export default function Create() {
                     />
                 </label>
                 <label>
-                    <span>Task category:</span>
+                    <span>{translation[language].taskCategory}:</span>
                     <Select
                         onChange={(option) => setCategory(option)}
                         options={categories}
                     />
                 </label>
                 <label>
-                    <span>Assign users to the task:</span>
+                    <span>{translation[language].assignedUsers}:</span>
                     <Select
                         options={users}
                         onChange={(option) => setAssignedUsers(option)}
@@ -173,8 +175,9 @@ export default function Create() {
                     />
                 </label>
                 {formError && <p className='error'>{formError}</p>}
-                <button className='btn'>Add project</button>
+                <button className='btn'>{translation[language].addTaskBtn}</button>
             </form>
         </div>
+
     )
 }
