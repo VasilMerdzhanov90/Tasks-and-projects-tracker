@@ -1,5 +1,6 @@
 import { getDate, getMonth, getYear } from "date-fns";
 import { useState } from "react";
+
 import translation from "../../translations/translation.json";
 
 export default function DueDateFilter({ language, projects, projectsSetter }) {
@@ -17,18 +18,25 @@ export default function DueDateFilter({ language, projects, projectsSetter }) {
     "11",
     "12",
   ];
+
   const [searchedDueDate, setSearchedDueDate] = useState(null);
 
   const handleDateFilter = (e) => {
+    const selectedDate = e.target.valueAsDate;
+    const dateFromCalendar = getDate(selectedDate);
+    const monthFromCalendar = monthEnum[getMonth(selectedDate)];
+    const yearFromCalendar = getYear(selectedDate);
+    const fullDate = `${yearFromCalendar}-${monthFromCalendar}-${dateFromCalendar}`;
+
     const filteredResult = projects.filter((x) => {
       const dateFromDocument = getDate(x.dueDate.seconds * 1000);
-      const monthFromDocument = getMonth(x.dueDate.seconds * 1000);
+      const monthFromDocument = monthEnum[getMonth(x.dueDate.seconds * 1000)];
       const yearFromDocument = getYear(x.dueDate.seconds * 1000);
 
-      const timeTemplate = `${yearFromDocument}-${monthEnum[monthFromDocument]}-${dateFromDocument}`;
-      setSearchedDueDate(timeTemplate);
-
-      return timeTemplate === e.target.value;
+      const projectFullDate = `${yearFromDocument}-${monthFromDocument}-${dateFromDocument}`;
+      setSearchedDueDate(fullDate);
+      
+      return fullDate === projectFullDate;
     });
     projectsSetter(filteredResult);
   };
