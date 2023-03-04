@@ -14,7 +14,6 @@
     "filterList": [
       "всички",
       "назначени",
-      "дата",
       "разработка",
       "дизайн",
       "маркетинг",
@@ -44,7 +43,10 @@
     "mainThemeMsg": "Моля изберете тема на основния прозорец",
     "afterChangesMsg": "След промяна, моля опреснете вашият прозорец!",
     "saveSettingsBtn": "Запазете настройките",
-    "savePengingBtn": "Запазване..."
+    "savePengingBtn": "Запазване...",
+    "dueDateFilterSelect": "Изберете крайна дата:",
+    "reset": "Опресняване",
+    "selected":"Избрана дата"
   },
   "en": {
     "greeting": "Hello, ",
@@ -61,7 +63,6 @@
     "filterList": [
       "all",
       "assigned",
-      "date",
       "development",
       "design",
       "marketing",
@@ -91,6 +92,9 @@
     "mainThemeMsg": "Please select dashboard theme!",
     "afterChangesMsg": "After changes, please refresh your browser!",
     "saveSettingsBtn": "Save settings",
-    "savePengingBtn": "Saving..."
+    "savePengingBtn": "Saving...",
+    "dueDateFilterSelect": "Select due date to filter:",
+    "reset": "Reset",
+    "selected":"Selected"
   }
 }
